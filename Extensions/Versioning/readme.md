@@ -80,4 +80,6 @@ The Android manifest versioner takes the following extra parameters:
 - V1.33   - Issue #261 add option to enable/disable recursion in file search for JSON Versioner 
 - V1.34   - Issue #251 fixed regex issue with Android versioner
 - V1.35   - Issue #281 fixed JSON versioner to handle SEMVER format
-- V1.36   - Issue #288 fixed .NETCore versioner handler for updating all fields
+- V1.36   - Issue #288 fixed .NETCore versioner handler for updating all fields with version in name
+- V1.37   - Issue #296 fixed .NETCore versioner handler for updating all fields to limit to .NET core specific fields, also added check to make sure only update .NET core project file
+

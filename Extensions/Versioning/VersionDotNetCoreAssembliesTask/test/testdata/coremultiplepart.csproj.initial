@@ -5,10 +5,8 @@
     <AssemblyName>VersionedLibrary</AssemblyName>
     <AnotherVersion>1.2.3.4</AnotherVersion>
     <VersionAnother>1.2.3.4</VersionAnother>
-    <AssemblyVersion>9.9.9.9</AssemblyVersion>
-    <Version>9.9.9.9</Version>
-    <VersionPrefix>9.9.9.9</VersionPrefix>
-    <VersionSuffix>alpha</VersionSuffix>
+    <AssemblyVersion>1.2.3.4</AssemblyVersion>
+    <Version>1.2.3.4</Version>
     <Description>A description</Description>
   </PropertyGroup>
 

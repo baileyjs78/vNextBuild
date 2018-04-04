@@ -4,6 +4,9 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>VersionedLibrary</AssemblyName>
     <AssemblyVersion>1.2.3.4</AssemblyVersion>
+    <Version>1.2.3.4</Version>
+    <VersionPrefix>1.2.3</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
     <Description>A description</Description>
   </PropertyGroup>
 

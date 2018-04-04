@@ -3,9 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>VersionedLibrary</AssemblyName>
+    <AnotherVersion>1.2.3.4</AnotherVersion>
+    <VersionAnother>1.2.3.4</VersionAnother>
     <AssemblyVersion>1.2.3.4</AssemblyVersion>
-    <AssemblyInfoVersion>1.2.3.4</AssemblyInfoVersion>
+    <Version>1.2.3.4</Version>
+    <VersionPrefix>1.2.3</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
     <Description>A description</Description>
   </PropertyGroup>
 
 </Project>
+

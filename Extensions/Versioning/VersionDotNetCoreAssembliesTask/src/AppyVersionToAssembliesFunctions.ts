@@ -13,7 +13,13 @@ export function findFiles (dir, filename , filelist) {
       }
       else {
         if (file.toLowerCase().endsWith(filename.toLowerCase())) {
-          filelist.push(path.join(dir, file));
+          var filecontent = fs.readFileSync(path.join(dir, file));
+          if (filecontent.toString().toLowerCase().indexOf("<project sdk=\"microsoft.net.sdk") === -1) {
+              console.log(`Skipping file ${file} as is not a .NETCore Project`);
+          } else {
+            console.log(`Adding file ${file} as is a .NETCore Project`);
+            filelist.push(path.join(dir, file));
+          }
         }
       }
     });
@@ -63,16 +69,21 @@ export function ProcessFile(file, field, newVersion) {
         }
     } else {
         console.log(`Updating all version fields with ${newVersion}`);
-        const csprojVersionRegex = /(<\w+Version>)(.*)(<\/\w+Version>)/gmi;
+        let versionFields = ["Version", "VersionPrefix", "AssemblyVersion"];
         let content: string = filecontent.toString();
-        let matches;
-        while ((matches = csprojVersionRegex.exec(content)) !== null) {
-            var existingTag: string = matches[0];
-            console.log(`Existing Tag: ${existingTag}`);
-            var replacementTag: string = `${matches[1]}${newVersion}${matches[3]}`;
-            console.log(`Replacement Tag: ${replacementTag}`);
-            content = content.replace(existingTag, replacementTag);
-        }
+        versionFields.forEach(element => {
+            console.log(`Processing Field ${element}`);
+            const csprojVersionRegex = `(<${element}>)(.*)(<\/${element}>)`;
+            var regexp = new RegExp(csprojVersionRegex, "gmi");
+            let matches;
+            while ((matches = regexp.exec(content)) !== null) {
+                var existingTag1: string = matches[0];
+                console.log(`Existing Tag: ${existingTag1}`);
+                var replacementTag1: string = `${matches[1]}${newVersion}${matches[3]}`;
+                console.log(`Replacement Tag: ${replacementTag1}`);
+                content = content.replace(existingTag1, replacementTag1);
+            }
+        });
         fs.writeFileSync(file, content);
     }
     console.log (`${file} - version applied`);

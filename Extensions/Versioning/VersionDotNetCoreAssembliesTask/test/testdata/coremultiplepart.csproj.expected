@@ -7,8 +7,6 @@
     <VersionAnother>1.2.3.4</VersionAnother>
     <AssemblyVersion>9.9.9.9</AssemblyVersion>
     <Version>9.9.9.9</Version>
-    <VersionPrefix>9.9.9.9</VersionPrefix>
-    <VersionSuffix>alpha</VersionSuffix>
     <Description>A description</Description>
   </PropertyGroup>
 

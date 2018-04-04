@@ -44,7 +44,7 @@ describe("Test the basic file processing", () => {
 
   });
 
-  describe("Test the add field file processing", () => {
+describe("Test the add field file processing", () => {
     before(function() {
       // make a copy we can overwrite without breaking test data
       copyFileSync("test/testdata/coremissing.csproj.initial", "test/testdata/core.csproj");
@@ -67,7 +67,7 @@ describe("Test the basic file processing", () => {
 
   });
 
-  describe("Test the generic field file processing", () => {
+describe("Test the generic field file processing when all present", () => {
     before(function() {
       // make a copy we can overwrite without breaking test data
       copyFileSync("test/testdata/coremultiple.csproj.initial", "test/testdata/core.csproj");
@@ -79,6 +79,28 @@ describe("Test the basic file processing", () => {
 
       var editedfilecontent = fs.readFileSync(file);
       var expectedfilecontent = fs.readFileSync(`test/testdata/coremultiple.csproj.expected`);
+
+      expect(editedfilecontent.toString()).equals(expectedfilecontent.toString());
+    });
+
+    after(function() {
+      // remove the file if created
+      del.sync("test/testdata/*.csproj");
+    });
+
+  });
+  describe("Test the generic field file processing when part present", () => {
+    before(function() {
+      // make a copy we can overwrite without breaking test data
+      copyFileSync("test/testdata/coremultiplepart.csproj.initial", "test/testdata/core.csproj");
+    });
+
+    it("should be able to update a generic version field in a file", () => {
+      var file = "test/testdata/core.csproj";
+      ProcessFile(file, "", "9.9.9.9");
+
+      var editedfilecontent = fs.readFileSync(file);
+      var expectedfilecontent = fs.readFileSync(`test/testdata/coremultiplepart.csproj.expected`);
 
       expect(editedfilecontent.toString()).equals(expectedfilecontent.toString());
     });
